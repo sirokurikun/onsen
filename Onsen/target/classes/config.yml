@@ -1,0 +1,41 @@
+teleport:
+  normal:
+    item: CAMPFIRE
+    name: 通常温泉へテレポート
+    slot: 0
+  lava:
+    item: LAVA_BUCKET
+    name: 溶岩温泉へテレポート
+    slot: 1
+  ringo:
+    item: APPLE
+    name: 林檎村温泉へテレポート
+    slot: 2
+  itubisi:
+    item: BREAD
+    name: 五菱温泉へテレポート
+    slot: 3
+  nagisa:
+    item: CAMPFIRE
+    name: なぎさ温泉へテレポート
+    slot: 4
+  azi:
+    item: COD
+    name: アジ温泉へテレポート
+    slot: 5
+  ringomura:
+    item: GOLDEN_APPLE
+    name: 林檎帝国温泉へテレポート
+    slot: 6
+  milkyway:
+    item: MILK_BUCKET
+    name: ミルキーウェイ温泉へテレポート
+    slot: 7
+normal: lobby,-8,3,-6
+lava: lobby,37,4,-15
+ringo: world,35,70,-258
+itubisi: world,-143,70,-200
+nagisa: world,-7662,72,-3046
+azi: lobby,-147,4,51
+ringomura: world,-1395,63,-7775
+milkyway: world,-2505,100,-6152

@@ -1,0 +1,16 @@
+name: Onsen
+version: 2.3.2
+main: onsen.onsen.Onsen
+api-version: '1.15'
+authors: [ghost_46]
+description: LIFE pligin
+
+commands:
+  onsen:
+    description: 温泉tp
+  setonsen:
+    description: 温泉登録
+
+permissions:
+  setonsen.set.op:
+    default: op
