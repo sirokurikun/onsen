@@ -85,6 +85,12 @@ public final class Onsen extends JavaPlugin implements Listener {
                         lore.add(ChatColor.translateAlternateColorCodes('&', "&dY座標&f:" + y));
                         lore.add(ChatColor.translateAlternateColorCodes('&', "&dZ座標&f:" + z));
                         lore.add(ChatColor.translateAlternateColorCodes('&',"&d温泉名&f:"+ args[1]));
+                        if (args.length <= 2) {
+                            return false;
+                        }
+                        if(args[2].equalsIgnoreCase(args[2])){
+                            lore.add(ChatColor.translateAlternateColorCodes('&',"&d希望アイテム&f:"+args[2]));
+                        }
                         itemMeta.setLore(lore);
                         itempack.setItemMeta(itemMeta);
                         player.sendMessage("リクエスト用として情報を記載しました");
