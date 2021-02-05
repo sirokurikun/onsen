@@ -61,6 +61,38 @@ public final class Onsen extends JavaPlugin implements Listener {
                 return false;
             }
 
+            if(args[0].equalsIgnoreCase("request")){
+                if (args.length <= 1) {
+                    return false;
+                }
+                if(args[1].equalsIgnoreCase(args[1])){
+                    ItemStack itempack = player.getInventory().getItemInMainHand();
+                    ItemMeta itemMeta = itempack.getItemMeta();
+                    String itemdisplayname = itemMeta.getDisplayName();
+                    if(itemdisplayname.equals((ChatColor.translateAlternateColorCodes('&',"&5温泉リクエストチケット")))) {
+                        World world = player.getWorld();
+                        String worldname = world.getName();
+                        String displayname = player.getName();
+                        Location loc = player.getLocation();
+                        int x = loc.getBlockX();
+                        int y = loc.getBlockY();
+                        int z = loc.getBlockZ();
+                        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&a温泉リクエストチケット"));
+                        List<String> lore = new ArrayList<String>();
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&dプレイヤー名&f:" + displayname));
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&dワールド名&f:" + worldname));
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&dX座標&f:" + x));
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&dY座標&f:" + y));
+                        lore.add(ChatColor.translateAlternateColorCodes('&', "&dZ座標&f:" + z));
+                        lore.add(ChatColor.translateAlternateColorCodes('&',"&d温泉名&f:"+ args[1]));
+                        itemMeta.setLore(lore);
+                        itempack.setItemMeta(itemMeta);
+                        player.sendMessage("リクエスト用として情報を記載しました");
+                    }
+                }
+                return false;
+            }
+
             if(args[0].equalsIgnoreCase("menu")){
                 Player p = (Player) sender;
                 p.sendMessage("OnsenMenuを開きました！");
@@ -142,7 +174,7 @@ public final class Onsen extends JavaPlugin implements Listener {
         ItemMeta itemMeta = itempack.getItemMeta();
         if(itemMeta == null) return;
         String itemdisplayname = itemMeta.getDisplayName();
-        if(itemdisplayname.equals((ChatColor.translateAlternateColorCodes('&',"&5温泉リクエストチケット")))) {
+        if(itemdisplayname.equals((ChatColor.translateAlternateColorCodes('&',"&a温泉リクエストチケット")))) {
             Block clickedBlock = e.getBlock();
             if (clickedBlock.getType() == Material.OAK_WALL_SIGN) {
                 Sign sign = (Sign) clickedBlock.getState();
@@ -166,38 +198,6 @@ public final class Onsen extends JavaPlugin implements Listener {
                         }
                     }
                 }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent e){
-        Player player = e.getPlayer();
-        ItemStack itempack = player.getInventory().getItemInMainHand();
-        ItemMeta itemMeta = itempack.getItemMeta();
-        if(itemMeta == null) return;
-        String itemdisplayname = itemMeta.getDisplayName();
-        if(itemdisplayname.equals((ChatColor.translateAlternateColorCodes('&',"&5温泉リクエストチケット")))) {
-            if (e.getAction().equals(Action.LEFT_CLICK_BLOCK) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
-            if (e.getHand() != EquipmentSlot.HAND) return;
-            World world = e.getPlayer().getWorld();
-            if (e.getAction() == Action.RIGHT_CLICK_AIR) {
-                String worldname = world.getName();
-                String displayname = player.getName();
-                Location loc = player.getLocation();
-                int x = loc.getBlockX();
-                int y = loc.getBlockY();
-                int z = loc.getBlockZ();
-                itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&5温泉リクエストチケット"));
-                List<String> lore = new ArrayList<String>();
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&dプレイヤー名&f:" + displayname));
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&dワールド名&f:" + worldname));
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&dX座標&f:" + x));
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&dY座標&f:" + y));
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&dZ座標&f:" + z));
-                itemMeta.setLore(lore);
-                itempack.setItemMeta(itemMeta);
-                player.sendMessage("リクエスト用として情報を記載しました");
             }
         }
     }
